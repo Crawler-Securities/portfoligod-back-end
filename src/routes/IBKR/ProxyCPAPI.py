@@ -1,5 +1,7 @@
 import requests
 import urllib3
+from requests import Response
+
 
 urllib3.disable_warnings()
 
@@ -33,7 +35,7 @@ class ProxyCPAPI:
         except requests.RequestException as e:
             print(f"An error occurred: {e}")
 
-    def check_cpapi_auth_status(self):
+    def check_cpapi_auth_status(self) -> Response:
         # Prepare the URL for the status check
         status_url = f"{self._gateway_url}/iserver/auth/status"
         response = requests.get(status_url, verify=False)
